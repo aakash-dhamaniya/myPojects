@@ -4,7 +4,7 @@ const category=document.getElementById('category');
 const form=document.getElementById('form');
 form.addEventListener('submit', storeLocal);
 //this will store all data to local storage;
-let id=1;
+
 function storeLocal(e){
     e.preventDefault();
 let details={
@@ -13,11 +13,16 @@ description:description.value,
 category:category.value
 
 }
+let check=localStorage.getItem(expense.value+description.value+category.value)
+if(!check){
 localStorage.setItem(expense.value+description.value+category.value,JSON.stringify(details))
+
 showData(details);
+}
 }
 function showData(details)
 {
+    
     const parentNode=document.getElementById('listdetails') 
     const childHTML=`<li id=${details.expense+details.description+details.category}> ${details.expense} - ${details.description} - ${details.category} 
      <button onclick=deleteDetails('${details.expense+details.description+details.category}')>X</button>
