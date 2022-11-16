@@ -14,6 +14,7 @@ category:category.value
 
 }
 let check=localStorage.getItem(expense.value+description.value+category.value)
+//check if key is present or not if not then create new dom else not
 if(!check){
 localStorage.setItem(expense.value+description.value+category.value,JSON.stringify(details))
 
